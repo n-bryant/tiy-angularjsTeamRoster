@@ -1,0 +1,145 @@
+/****** Vendor Imports ******/
+/********** Setup ***********/
+@import url("https://fonts.googleapis.com/css?family=Lato|Raleway");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+body {
+  height: 100vh;
+  line-height: 1;
+  width: 100vw; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+.lato {
+  font-family: 'Lato', sans-serif; }
+
+.raleway, body {
+  font-family: 'Raleway', sans-serif; }
+
+body {
+  background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/greyzz.png) #eee; }
+
+.placeholder {
+  color: #cdcdcd;
+  font: 28px/35px 'Lato', sans-serif;
+  text-align: center;
+  text-transform: uppercase; }
+
+/***** Site Components ******/
+nav {
+  align-items: stretch;
+  background: #eee;
+  display: flex;
+  justify-content: center; }
+  nav div:first-child {
+    background: #09519B;
+    flex-grow: 5; }
+  nav div:last-child {
+    background: #085181;
+    flex-grow: 5; }
+  nav .team {
+    border-bottom: 0 solid transparent;
+    color: #fff;
+    cursor: pointer;
+    flex-grow: 1;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: border 0.25s ease;
+    min-width: 125px; }
+    nav .team.thunder {
+      background: #09519B; }
+      nav .team.thunder:hover, nav .team.thunder.active {
+        border-bottom: 8px solid #1884f2; }
+    nav .team.hornets {
+      background: #1D1160; }
+      nav .team.hornets:hover, nav .team.hornets.active {
+        border-bottom: 8px solid #3720b7; }
+    nav .team.clippers {
+      background: #D7083B; }
+      nav .team.clippers:hover, nav .team.clippers.active {
+        border-bottom: 8px solid #f84d77; }
+    nav .team.lynx {
+      background: #085181; }
+      nav .team.lynx:hover, nav .team.lynx.active {
+        border-bottom: 8px solid #0e8de1; }
+    nav .team.sparks {
+      background: #542684; }
+      nav .team.sparks:hover, nav .team.sparks.active {
+        border-bottom: 8px solid #8746ca; }
+
+main {
+  align-items: top;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0; }
+
+.roster-container {
+  width: 500px; }
+  .roster-container li {
+    cursor: pointer;
+    padding: 7.5px 5px; }
+    .roster-container li span {
+      display: inline-block;
+      width: 100px; }
+      .roster-container li span:last-child {
+        width: 200px; }
+  .roster-container li {
+    transition: background 0.25s ease; }
+    .roster-container li:nth-child(odd) {
+      background: #ddd; }
+      .roster-container li:nth-child(odd):hover {
+        background: #eee; }
+    .roster-container li:first-child {
+      border-bottom: 1px solid #333;
+      cursor: default;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold; }
+      .roster-container li:first-child:hover {
+        background: #ddd; }
+    .roster-container li:nth-child(even) {
+      background: #f5f5f5; }
+      .roster-container li:nth-child(even):hover {
+        background: #fff; }
+
+.player-container {
+  text-align: center;
+  width: 350px; }
+  .player-container h3 {
+    font: 28px/35px 'Raleway', sans-serif; }

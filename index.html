@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- 'bootstrapping' -->
+
+<!-- {{}} with values/expressions
+{} with key/value pairs
+no brackets with function/event calls -->
+<html lang='en' ng-app="rosters">
+    <head>
+        <meta charset='UTF-8'>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <title>Intro to Angular JS - The Starting Five</title>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="lib/styles/main.min.css">
+    </head>
+    <!-- aliasing RosterController and setting its scope to the body element -->
+    <body ng-controller="RosterController as rosterCtrl">
+        <header>
+            <nav>
+                <div></div>
+                <!-- ng-click is angular's click event -->
+                <!-- ng-class adjusts classes.  here we are adding the active class if teamName is 'team' -->
+                <div ng-class="{active: rosterCtrl.teamName === 'thunder'}" ng-click="rosterCtrl.updateTeam('thunder')" class="team thunder">Thunder</div>
+                <div ng-class="{active: rosterCtrl.teamName === 'hornets'}" ng-click="rosterCtrl.updateTeam('hornets')" class="team hornets">Hornets</div>
+                <div ng-class="{active: rosterCtrl.teamName === 'clippers'}" ng-click="rosterCtrl.updateTeam('clippers')" class="team clippers">Clippers</div>
+                <div ng-class="{active: rosterCtrl.teamName === 'sparks'}" ng-click="rosterCtrl.updateTeam('sparks')" class="team sparks">Sparks</div>
+                <div ng-class="{active: rosterCtrl.teamName === 'lynx'}" ng-click="rosterCtrl.updateTeam('lynx')" class="team lynx">Lynx</div>
+                <div></div>
+            </nav>
+        </header>
+        <main>
+            <section class="roster-container">
+                <!-- ng-show shows an element based on a specified condition -->
+                <ul ng-show="rosterCtrl.activeTeam">
+                    <li>
+                      <span ng-click="rosterCtrl.updateTable('position')">Position</span>
+                      <span ng-click="rosterCtrl.updateTable('number')">Number</span>
+                      <span ng-click="rosterCtrl.updateTable('name')">Name</span>
+                    </li>
+                    <!-- iterate over something with ng-repeat -->
+                    <!-- player is an alias we assigned -->
+                    <!-- | specifies we are sending the results to a filter -->
+                    <li ng-repeat="player in rosterCtrl.activeTeam | orderBy: rosterCtrl.orderByField:rosterCtrl.reverseSort" ng-click="rosterCtrl.showPlayer(player)">
+                        <span>{{player.position}}</span>
+                        <span>{{player.number}}</span>
+                        <span>{{player.name}}</span>
+                    </li>
+                </ul>
+                <!-- ng-hide hides an element based on a specified condition -->
+                <p ng-hide="rosterCtrl.activeTeam" class="placeholder">Select a Team</p>
+            </section>
+            <section class="player-container">
+                <div ng-show="rosterCtrl.activePlayer">
+                    <!-- ng-src tells browser to ignore img until something triggers the src -->
+                    <img ng-src="{{rosterCtrl.activePlayer.image}}" alt="{{rosterCtrl.activePlayer.name}}">
+                    <h3>{{rosterCtrl.activePlayer.name}}</h3>
+                    <p>{{rosterCtrl.activePlayer.position}} - {{rosterCtrl.activePlayer.number}}</p>
+                </div>
+                <p ng-hide="rosterCtrl.activePlayer" class="placeholder">Select a Player</p>
+            </section>
+        </main>
+        <script src="src/js/vendor/jquery-3.1.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src='src/js/app.js'></script>
+        <script src='src/js/allTeamsService.js'></script>
+    </body>
+</html>

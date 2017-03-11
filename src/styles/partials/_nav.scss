@@ -1,0 +1,40 @@
+nav {
+    align-items: stretch;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+
+    div:first-child {
+        background: $thunder;
+        flex-grow: 5;
+    }
+
+    div:last-child {
+        background: $lynx;
+        flex-grow: 5;
+    }
+
+    .team {
+        border-bottom: 0 solid transparent;
+        color: #fff;
+        cursor: pointer;
+        flex-grow: 1;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 $hspace;
+        text-align: center;
+        text-transform: uppercase;
+        transition: border 0.25s ease;
+        min-width: 125px;
+
+        @each $team, $color in $teams {
+            &.#{$team} {
+                background: $color;
+
+                &:hover, &.active {
+                    border-bottom: 8px solid lighten($color, 20%);
+                }
+            }
+        }
+    }
+}

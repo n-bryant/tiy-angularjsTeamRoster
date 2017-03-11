@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app='classwork'>
+
+    <head></head>
+
+    <body>
+        <header ng-controller="HeaderController as header">
+            <h1>{{header.greet()}}</h1>
+        </header>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+        <script src='src/js/lecture.js'></script>
+    </body>
+
+</html>
+
+
+
+
+<!doctype html>
+<html lang='en' ng-app="rosters">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Intro to Angular JS - The Starting Five</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="lib/styles/main.min.css">
+</head>
+
+<body ng-controller="RosterController as roster">
+    <header>
+        <nav>
+            <div></div>
+            <div ng-class="{active: roster.teamName === 'thunder'}" ng-click="roster.showRoster('thunder')" class="team thunder">Thunder</div>
+            <div ng-class="{active: roster.teamName === 'hornets'}" ng-click="roster.showRoster('hornets')" class="team hornets">Hornets</div>
+            <div ng-class="{active: roster.teamName === 'clippers'}" ng-click="roster.showRoster('clippers')" class="team clippers">Clippers</div>
+            <div ng-class="{active: roster.teamName === 'sparks'}" ng-click="roster.showRoster('sparks')" class="team sparks">Sparks</div>
+            <div ng-class="{active: roster.teamName === 'lynx'}" ng-click="roster.showRoster('lynx')" class="team lynx">Lynx</div>
+            <div></div>
+        </nav>
+    </header>
+    <main>
+        <section class="roster-container">
+            <ul ng-show="roster.selectedTeam">
+                <li><span>Position</span><span>Number</span><span>Name</span></li>
+                <li ng-click="roster.showPlayer(player)" ng-repeat="player in roster.selectedTeam | orderBy: 'name'">
+                    <span>{{player.position}}</span>
+                    <span>{{player.number}}</span>
+                    <span>{{player.name}}</span>
+                </li>
+            </ul>
+            <p ng-hide="roster.selectedTeam" class="placeholder">Select a Team</p>
+        </section>
+        <section class="player-container">
+            <div ng-show="roster.selectedPlayer">
+                <img ng-src="{{roster.selectedPlayer.image}}" alt="{{roster.selectedPlayer.name}}">
+                <h3>{{roster.selectedPlayer.name}}</h3>
+                <p>{{roster.selectedPlayer.position}} - {{roster.selectedPlayer.number}}</p>
+            </div>
+            <p ng-hide="roster.selectedPlayer" class="placeholder">Select a Player</p>
+        </section>
+    </main>
+    <script src="src/js/vendor/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src='src/js/app.js'></script>
+    <script src='src/js/allTeamsService.js'></script>
+</body>
+
+</html>

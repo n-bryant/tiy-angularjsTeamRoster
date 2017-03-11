@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- ng- is abbreviation of angular -->
+<!-- 'bootstrapping your app' - putting ng-app="moduleName" on html element which gives access to the full page -->
+<!-- directives are scoped to element they are assigned to -->
+<html ng-app="helloWorld">
+  <head>
+    <meta charset="utf-8">
+    <title>Intro to Angular</title>
+  </head>
+  <!-- ng-controller ='controllerName as alias' -->
+  <body>
+    <!-- syntax to pull in data is similar to Handlebars.js -->
+    <div ng-controller="HeaderController as headerCtrl">
+      <h1>Hello, {{headerCtrl.displayName()}}.</h1>
+    </div>
+    <div>
+      <h2>Names:</h2>
+      <p>{{headerCtrl.displayName()}}</p>
+    </div>
+
+    <!-- most existing code bases use angular 1.5. angular v2 is pretty different -->
+    <script src="./src/js/vendor/angular.min.js"></script>
+    <script src="./src/js/app.js"></script>
+  </body>
+</html>
